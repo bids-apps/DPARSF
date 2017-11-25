@@ -3,7 +3,7 @@
 # 
 This is a docker version of DPARSF V4.3, working for BIDS data structure.
 
-1. Prepare you data in BIDS structure. Currently should be single session single run data, e.g., https://github.com/INCF/BIDS-examples/tree/master/ds003. PLEASE RESERVE THE TR INFORMATION WITHIN THE NIFTI HEADER.
+1. Prepare your data in BIDS structure. Currently should be single session single run data, e.g., https://github.com/INCF/BIDS-examples/tree/master/ds003. PLEASE RESERVE THE TR INFORMATION WITHIN THE NIFTI HEADER.
 
 2. Build the container:
 sudo docker build -t dparsfdocker .
