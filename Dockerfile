@@ -14,7 +14,7 @@ RUN apt-get -qq update && apt-get -qq install -y \
 ENV MATLAB_VERSION R2016b
 RUN mkdir /opt/mcr_install && \
     mkdir /opt/mcr && \
-    wget -P /opt/mcr_install http://www.mathworks.com/supportfiles/downloads/${MATLAB_VERSION}/deployment_files/${MATLAB_VERSION}/installers/glnxa64/MCR_${MATLAB_VERSION}_glnxa64_installer.zip && \
+    wget --quiet -P /opt/mcr_install http://www.mathworks.com/supportfiles/downloads/${MATLAB_VERSION}/deployment_files/${MATLAB_VERSION}/installers/glnxa64/MCR_${MATLAB_VERSION}_glnxa64_installer.zip && \
     unzip -q /opt/mcr_install/MCR_${MATLAB_VERSION}_glnxa64_installer.zip -d /opt/mcr_install && \
     /opt/mcr_install/install -destinationFolder /opt/mcr -agreeToLicense yes -mode silent && \
     rm -rf /opt/mcr_install /tmp/*
@@ -26,7 +26,7 @@ ENV MCR_INHIBIT_CTF_LOCK 1
 ENV MCRPath /opt/mcr/${MCR_VERSION}
 
 # Install DPARSFA Standalone
-RUN wget -P /opt http://lab.rfmri.org/sites/default/files/DPABI/DPARSF/DPARSFA_run_StandAlone_Linux.zip && \
+RUN wget --quiet -P /opt http://lab.rfmri.org/sites/default/files/DPABI/DPARSF/DPARSFA_run_StandAlone_Linux.zip && \
     unzip -q /opt/DPARSFA_run_StandAlone_Linux.zip -d /opt && \
     rm -f /opt/DPARSFA_run_StandAlone_Linux.zip
 
