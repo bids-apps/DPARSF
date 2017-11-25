@@ -30,7 +30,7 @@ RUN wget -P /opt http://lab.rfmri.org/sites/default/files/DPABI/DPARSF/DPARSFA_r
     unzip -q /opt/DPARSFA_run_StandAlone_Linux.zip -d /opt && \
     rm -f /opt/DPARSFA_run_StandAlone_Linux.zip
 
-# Configure SPM BIDS App entry point
+# Configure DPARSF BIDS App entry point
 COPY run.sh /opt/DPARSFA_run_StandAlone_Linux/
 COPY Template_V4_CalculateInMNISpace_Warp_DARTEL_docker.mat /opt/DPARSFA_run_StandAlone_Linux/
 COPY version /version
