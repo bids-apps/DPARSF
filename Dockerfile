@@ -7,6 +7,7 @@ MAINTAINER Chao-Gan Yan <ycg.yan@gmail.com>
 RUN apt-get -qq update && apt-get -qq install -y \
     unzip \
     xorg \
+    octave \
     wget && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -33,11 +34,10 @@ RUN wget --quiet -P /opt http://lab.rfmri.org/sites/default/files/DPABI/DPARSF/D
 # Configure DPARSF BIDS App entry point
 COPY run.sh /opt/DPARSFA_run_StandAlone_Linux/
 COPY Template_V4_CalculateInMNISpace_Warp_DARTEL_docker.mat /opt/DPARSFA_run_StandAlone_Linux/
+COPY y_Convert_BIDS2DPARSFA.m /opt/DPARSFA_run_StandAlone_Linux/
 COPY version /version
 RUN chmod +x /opt/DPARSFA_run_StandAlone_Linux/run.sh
-RUN chmod +x /opt/DPARSFA_run_StandAlone_Linux/run_y_Convert_BIDS2DPARSF.sh
 RUN chmod +x /opt/DPARSFA_run_StandAlone_Linux/run_DPARSFA_run.sh
-RUN chmod +x /opt/DPARSFA_run_StandAlone_Linux/y_Convert_BIDS2DPARSF
 RUN chmod +x /opt/DPARSFA_run_StandAlone_Linux/DPARSFA_run
 
 ENV DPARSFPath /opt/DPARSFA_run_StandAlone_Linux

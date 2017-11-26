@@ -1,6 +1,10 @@
 #!/bin/bash
 
-${DPARSFPath}/run_y_Convert_BIDS2DPARSF.sh ${MCRPath} $1 $2
+cd ${DPARSFPath}
 
-${DPARSFPath}/run_DPARSFA_run.sh ${MCRPath} ${DPARSFPath}/Template_V4_CalculateInMNISpace_Warp_DARTEL_docker.mat $2 $2/SubID.txt 0
+optvalues="$@"
+
+octave --silent --eval "y_Convert_BIDS2DPARSFA(\"$1\",\"$2\",\"${optvalues}\")"
+
+${DPARSFPath}/run_DPARSFA_run.sh ${MCRPath} $2/DPARSFACfg.mat $2 $2/SubID.txt 0
 
