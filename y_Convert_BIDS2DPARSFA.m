@@ -81,6 +81,9 @@ for iSub=1:length(SubID)
 end
 fclose(fid);
 
+%delete previous TRInfo.tsv
+delete([OutDir,filesep,'TRInfo.tsv']);
+
 %Setup DPARSFA Cfg
 MATPATH=fileparts(mfilename('fullpath'));
 load([MATPATH,filesep,'Template_V4_CalculateInMNISpace_Warp_DARTEL_docker.mat'])
