@@ -26,8 +26,8 @@ ENV LD_LIBRARY_PATH /opt/mcr/${MCR_VERSION}/runtime/glnxa64:/opt/mcr/${MCR_VERSI
 ENV MCR_INHIBIT_CTF_LOCK 1
 ENV MCRPath /opt/mcr/${MCR_VERSION}
 
-# Install DPARSFA Standalone
-RUN wget --quiet -P /opt http://lab.rfmri.org/sites/default/files/DPABI/DPARSF/DPARSFA_run_StandAlone_Linux.zip && \
+# Install DPARSFA Standalone (from OSF mirror due to connectivity issues)
+RUN wget --quiet --no-check-certificate -c -O /opt/DPARSFA_run_StandAlone_Linux.zip "https://files.osf.io/v1/resources/q8g5z/providers/osfstorage/5a1a97366c613b026d5e6f79" && \
     unzip -q /opt/DPARSFA_run_StandAlone_Linux.zip -d /opt && \
     rm -f /opt/DPARSFA_run_StandAlone_Linux.zip
 
@@ -43,4 +43,3 @@ RUN chmod +x /opt/DPARSFA_run_StandAlone_Linux/DPARSFA_run
 ENV DPARSFPath /opt/DPARSFA_run_StandAlone_Linux
 
 ENTRYPOINT ["/opt/DPARSFA_run_StandAlone_Linux/run.sh"]
-
