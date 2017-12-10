@@ -97,6 +97,11 @@ end
 UseNoCoT1Image=1; %Prevent the dialog asking confirm use no co t1 images.
 save('-v7',[OutDir,filesep,'DPARSFACfg.mat'],'Cfg','UseNoCoT1Image');
 
+if exist([OutDir,filesep,'Config_DPARSF.m']) %Config DPARSF parameters use users setting
+    cd(OutDir)
+    Config_DPARSF([OutDir,filesep,'DPARSFACfg.mat']);
+end
+
 
 
 

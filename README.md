@@ -14,11 +14,13 @@ sudo docker run -i --rm -v /data/MyDataBIDS:/inputs:ro -v /data/DPARSFResults:/o
 You can also process a subset of subjects. (As DPARSF will parallel processing the participants automatically, and DPARSF use DARTEL to generate a GROUP TEMPLATE for spatial normalization, it's not recommended that you process only 1 subject at at time).
 sudo docker run -i --rm -v /data/MyDataBIDS:/inputs:ro -v /data/DPARSFResults:/outputs dparsfdocker /inputs /outputs participant --participant_label 01 02 04 05 07 09 10
 
-4. If you want to customize your processing, please edit y_Convert_BIDS2DPARSFA.m last section (%Setup DPARSFA Cfg) according to the instructions at: http://rfmri.org/content/configurations-dparsfarun, and then redo Steps 2 & 3.
+4. If you want to customize your processing, please put Config_DPARSF.m in your output directory, and setup it according to the instructions at: http://rfmri.org/content/configurations-dparsfarun.
 
 
 Please report any issues to http://rfmri.org/DPABIDiscussion.
 Please Cite:
 Yan, C.G., Zang, Y.F., 2010. DPARSF: A MATLAB Toolbox for "Pipeline" Data Analysis of Resting-State fMRI. Front Syst Neurosci 4, 13.
 Yan, C.G., Wang, X.D., Zuo, X.N., Zang, Y.F., 2016. DPABI: Data Processing & Analysis for (Resting-State) Brain Imaging. Neuroinformatics 14, 339-351.
+
+NOTE: DPARSF docker version is based on DPARSF Stand-Alone version (http://rfmri.org/DPABI_Stand-Alone), users SHOULD joint the R-fMRI Maps Project (http://rfmri.org/maps) if the docker or OpenNeuro version is used! Users are assumed have agreed with the terms in the user agreement if using these two versions.
 
