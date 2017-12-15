@@ -14,7 +14,12 @@ fprintf('Converting BIDS to DPARSFA structure...\n');
 
 Temp=strfind(Options,'--participant_label');
 if ~isempty(Temp) %Subject list provided
-    TempStr=Options(Temp:end);
+    TempConfig=strfind(Options,'--config'); %Check if --config is given
+    if isempty(TempConfig)
+        TempStr=Options(Temp:end);
+    else
+        TempStr=Options(Temp:TempConfig-2);
+    end
     Temp=strfind(TempStr,' ');
     SubID=[];
     for iSub=1:length(Temp)-1
@@ -97,10 +102,21 @@ end
 UseNoCoT1Image=1; %Prevent the dialog asking confirm use no co t1 images.
 save('-v7',[OutDir,filesep,'DPARSFACfg.mat'],'Cfg','UseNoCoT1Image');
 
-if exist([OutDir,filesep,'Config_DPARSF.m']) %Config DPARSF parameters use users setting
+
+TempConfig=strfind(Options,'--config'); %Check if --config is given
+if ~isempty(TempConfig)
+    TempStr=Options(TempConfig:end);
+    Temp=strfind(TempStr,' ');
+    FileName=TempStr(Temp(1)+1:Temp(2)-1);
+    copyfile(FileName,[OutDir,filesep,'Config_DPARSF.m'])
     cd(OutDir)
     Config_DPARSF([OutDir,filesep,'DPARSFACfg.mat']);
 end
+
+% if exist([OutDir,filesep,'Config_DPARSF.m']) %Config DPARSF parameters use users setting
+%     cd(OutDir)
+%     Config_DPARSF([OutDir,filesep,'DPARSFACfg.mat']);
+% end
 
 
 

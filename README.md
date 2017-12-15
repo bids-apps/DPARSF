@@ -14,7 +14,8 @@ sudo docker run -i --rm -v /data/MyDataBIDS:/inputs:ro -v /data/DPARSFResults:/o
 You can also process a subset of subjects. (As DPARSF will parallel processing the participants automatically, and DPARSF use DARTEL to generate a GROUP TEMPLATE for spatial normalization, it's not recommended that you process only 1 subject at at time).
 sudo docker run -i --rm -v /data/MyDataBIDS:/inputs:ro -v /data/DPARSFResults:/outputs dparsfdocker /inputs /outputs participant --participant_label 01 02 04 05 07 09 10
 
-4. If you want to customize your processing, please put Config_DPARSF.m in your output directory, and setup it according to the instructions at: http://rfmri.org/content/configurations-dparsfarun.
+4. If you want to customize your processing, please setup a .m file (Config_DPARSF.m is an example) according to the instructions at: http://rfmri.org/content/configurations-dparsfarun. Then use --config to specify the path. E.g., 
+sudo docker run -i --rm -v /data/MyDataBIDS:/inputs:ro -v /data/DPARSFResults:/outputs dparsfdocker /inputs /outputs participant --participant_label 01 02 04 05 07 09 10 --config /inputs/Config_DPARSF.m
 
 
 Please report any issues to http://rfmri.org/DPABIDiscussion.
