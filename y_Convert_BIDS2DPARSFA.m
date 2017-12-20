@@ -1,16 +1,22 @@
-function y_Convert_BIDS2DPARSFA(InDir, OutDir, Options)
+function y_Convert_BIDS2DPARSFA(InDir, OutDir, Options, SessionID)
 % function y_Convert_BIDS2DPARSFA(InDir, OutDir, Options)
 % Convert BIDS data structure to DPARSF data structure.
 %   Input:
 %     InDir  - Input dir with BIDS data.
 %     OutDir - Output dir with DPARSF data.
 %     Options - Options from command line
+%     SessionID - Unique ID for a instance when using parralel computing
 %___________________________________________________________________________
 % Written by YAN Chao-Gan 171125.
 % Key Laboratory of Behavioral Science and Magnetic Resonance Imaging Research Center, Institute of Psychology, Chinese Academy of Sciences, Beijing, China
 % ycg.yan@gmail.com
 
 fprintf('Converting BIDS to DPARSFA structure...\n');
+
+
+if ~exist('SessionID','var')
+    SessionID='';
+end
 
 Temp=strfind(Options,'--participant_label');
 if ~isempty(Temp) %Subject list provided
@@ -112,9 +118,11 @@ if Cfg.FunctionalSessionNumber==0
     Cfg.FunctionalSessionNumber=1;
 end
 
+Cfg.IsAllowGUI=0;
+
 UseNoCoT1Image=1; %Prevent the dialog asking confirm use no co t1 images.
 
-save('-v7',[OutDir,filesep,'DPARSFACfg.mat'],'Cfg','UseNoCoT1Image');
+save('-v7',[OutDir,filesep,'DPARSFACfg',SessionID,'.mat'],'Cfg','UseNoCoT1Image');
 
 TempConfig=strfind(Options,'--config'); %Check if --config is given
 if ~isempty(TempConfig)
@@ -125,9 +133,9 @@ if ~isempty(TempConfig)
     else
         FileName=TempStr(Temp(1)+1:Temp(2)-1);
     end
-    copyfile(FileName,[OutDir,filesep,'Config_DPARSF.m'])
+    copyfile(FileName,[OutDir,filesep,'Config_DPARSF',SessionID,'.m'])
     cd(OutDir)
-    Config_DPARSF([OutDir,filesep,'DPARSFACfg.mat']);
+    eval(['Config_DPARSF',SessionID,'([OutDir,filesep,''DPARSFACfg',SessionID,'.mat'']);']);
 end
 
 % if exist([OutDir,filesep,'Config_DPARSF.m']) %Config DPARSF parameters use users setting
