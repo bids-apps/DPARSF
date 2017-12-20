@@ -6,7 +6,7 @@ cd ${DPARSFPath}
 
 optvalues="$@"
 
-octave --silent --eval "y_Convert_BIDS2DPARSFA(\"$1\",\"$2\",\"${optvalues},\"${SessionID}\")"
+octave --silent --eval "y_Convert_BIDS2DPARSFA(\"$1\",\"$2\",\"${optvalues}\",\"${SessionID}\")"
 
 rm -rf $2/TRInfo.tsv
 
@@ -17,5 +17,4 @@ if [[ ${optvalues} == *" group "* ]];
 then
   octave --silent --eval "y_CopyDARTELTemplate(\"$1\",\"$2\",\"${optvalues}\")"
 fi
-
 

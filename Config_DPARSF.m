@@ -140,7 +140,7 @@ load(MatFile)
 %======================================
 %Please setup your configurations above this line
 
-save('-v7',MatFile,'Cfg','UseNoCoT1Image');
+save('-v7',MatFile,'Cfg','UseNoCoT1Image','T1SourceFileSet');
 
 
 

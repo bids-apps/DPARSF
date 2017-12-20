@@ -122,7 +122,15 @@ Cfg.IsAllowGUI=0;
 
 UseNoCoT1Image=1; %Prevent the dialog asking confirm use no co t1 images.
 
-save('-v7',[OutDir,filesep,'DPARSFACfg',SessionID,'.mat'],'Cfg','UseNoCoT1Image');
+
+T1SourceFileSet = cell(length(SubID),1); %For group level
+Temp=strfind(Options,' group '); %Check if at group level
+if ~isempty(Temp)
+    SourceDir=dir([OutDir,filesep,'T1ImgNewSegment',filesep,SubID{i},filesep,'sub*.nii');
+    T1SourceFileSet{i} = [OutDir,filesep,'T1ImgNewSegment',filesep,SubID{i},filesep,SourceDir(1).name];
+end
+
+save('-v7',[OutDir,filesep,'DPARSFACfg',SessionID,'.mat'],'Cfg','UseNoCoT1Image','T1SourceFileSet');
 
 TempConfig=strfind(Options,'--config'); %Check if --config is given
 if ~isempty(TempConfig)
