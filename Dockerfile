@@ -35,6 +35,7 @@ RUN wget --quiet --no-check-certificate -c -O /opt/DPARSFA_run_StandAlone_Linux.
 COPY run.sh /opt/DPARSFA_run_StandAlone_Linux/
 COPY Template_V4_CalculateInMNISpace_Warp_DARTEL_docker.mat /opt/DPARSFA_run_StandAlone_Linux/
 COPY y_Convert_BIDS2DPARSFA.m /opt/DPARSFA_run_StandAlone_Linux/
+COPY y_CopyDARTELTemplate.m /opt/DPARSFA_run_StandAlone_Linux/
 COPY Atlas /opt/DPARSFA_run_StandAlone_Linux/
 COPY version /version
 RUN chmod +x /opt/DPARSFA_run_StandAlone_Linux/run.sh

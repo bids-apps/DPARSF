@@ -25,7 +25,10 @@ load(MatFile)
 % Cfg.DataProcessDir=Cfg.WorkingDir; %Define DataProcessDir for compatibility
 % Cfg.SubjectID={}; %Subject ID List
 % Cfg.TimePoints=0; %Number of time points. Set to 0 to skip the checking
-% Cfg.TR=0; %TR. Set to 0 to read TR from the NIfTI files automatically
+
+%!!!! PLEASE REMEMBER TO SET UP THE CORRECT TR
+Cfg.TR=2; %TR. Set to 0 to read TR from the NIfTI files automatically
+
 Cfg.IsNeedConvertFunDCM2IMG=0; %Convert functional DICOM files to NIfTI files
 Cfg.IsApplyDownloadedReorientMats=0; %Apply downloaded reorientation files (or previously saved reorienting files). The downloaded reorient mats (*_ReorientFunImgMat.mat and *_ReorientT1ImgMat.mat) should be put in DownloadedReorientMats folder under the working directory
 Cfg.IsRemoveFirstTimePoints=1; %Remove the first time points.
