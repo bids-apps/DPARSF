@@ -23,7 +23,7 @@ sudo docker run -i --rm -v /data/MyDataBIDS:/inputs:ro -v /data/DPARSFResults:/o
 sudo docker run -i --rm -v /data/MyDataBIDS:/inputs:ro -v /data/DPARSFResults:/outputs dparsfdocker /inputs /outputs participant --participant_label 03 --config /inputs/Config_DPARSF_Step1.m  
 (2) Then run DARTEL create template at the group level.  
 sudo docker run -i --rm -v /data/MyDataBIDS:/inputs:ro -v /data/DPARSFResults:/outputs dparsfdocker /inputs /outputs group --participant_label 01 02 03 --config /inputs/Config_DPARSF_Step2.m  
-(3) Finally run all the processing after DARTEL template created.
+(3) Finally run all the processing after DARTEL template created.  
 sudo docker run -i --rm -v /data/MyDataBIDS:/inputs:ro -v /data/DPARSFResults:/outputs dparsfdocker /inputs /outputs participant --participant_label 01 --config /inputs/Config_DPARSF_Step3.m  
 sudo docker run -i --rm -v /data/MyDataBIDS:/inputs:ro -v /data/DPARSFResults:/outputs dparsfdocker /inputs /outputs participant --participant_label 02 --config /inputs/Config_DPARSF_Step3.m  
 sudo docker run -i --rm -v /data/MyDataBIDS:/inputs:ro -v /data/DPARSFResults:/outputs dparsfdocker /inputs /outputs participant --participant_label 03 --config /inputs/Config_DPARSF_Step3.m   
