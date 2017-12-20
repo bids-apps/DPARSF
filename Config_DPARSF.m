@@ -20,7 +20,7 @@ load(MatFile)
 %======================================
 
 % 
-% Cfg.DPARSFVersion='V4.1_160415'; %The version of DPARSF
+% Cfg.DPARSFVersion='V4.3_171210'; %The version of DPARSF
 % Cfg.WorkingDir=pwd; %The working directory. 
 % Cfg.DataProcessDir=Cfg.WorkingDir; %Define DataProcessDir for compatibility
 % Cfg.SubjectID={}; %Subject ID List

@@ -92,16 +92,29 @@ delete([OutDir,filesep,'TRInfo.tsv']);
 %Setup DPARSFA Cfg
 MATPATH=fileparts(mfilename('fullpath'));
 load([MATPATH,filesep,'Template_V4_CalculateInMNISpace_Warp_DARTEL_docker.mat'])
-Cfg.SubID=SubID;
+Cfg.SubjectID=SubID;
 Cfg.DataProcessDir=OutDir;
+
+Cfg.IsCalFC=0; %Functional Connectivity
+Cfg.IsExtractROISignals=1; %Extract ROI Signals. Will calculate the FC and zFC between the ROIs as well
+Cfg.CalFC.IsMultipleLabel=1; %1: There are multiple labels in the ROI mask file. Will extract each of them. (e.g., for aal.nii, extract all the time series for 116 regions); 0 (default): All the non-zero values will be used to define the only ROI
+Cfg.CalFC.ROIDef = {[MATPATH,filesep,'Atlas',filesep,'aal.nii'];...
+    [MATPATH,filesep,'Atlas',filesep,'HarvardOxford-cort-maxprob-thr25-2mm_YCG.nii'];...
+    [MATPATH,filesep,'Atlas',filesep,'HarvardOxford-sub-maxprob-thr25-2mm_YCG.nii'];...
+    [MATPATH,filesep,'Atlas',filesep,'CC200ROI_tcorr05_2level_all.nii'];...
+    [MATPATH,filesep,'Atlas',filesep,'Zalesky_980_parcellated_compact.nii'];...
+    [MATPATH,filesep,'Atlas',filesep,'Dosenbach_Science_160ROIs_Radius5_Mask.nii'];...
+    [MATPATH,filesep,'Atlas',filesep,'BrainMask_05_91x109x91.img'];... %YAN Chao-Gan, 161201. Add global signal.
+    [MATPATH,filesep,'Atlas',filesep,'Power_Neuron_264ROIs_Radius5_Mask.nii']}; %YAN Chao-Gan, 170104. Add Power 264.
 
 Cfg.FunctionalSessionNumber=FunctionalSessionNumber;
 if Cfg.FunctionalSessionNumber==0
     Cfg.FunctionalSessionNumber=1;
 end
-UseNoCoT1Image=1; %Prevent the dialog asking confirm use no co t1 images.
-save('-v7',[OutDir,filesep,'DPARSFACfg.mat'],'Cfg','UseNoCoT1Image');
 
+UseNoCoT1Image=1; %Prevent the dialog asking confirm use no co t1 images.
+
+save('-v7',[OutDir,filesep,'DPARSFACfg.mat'],'Cfg','UseNoCoT1Image');
 
 TempConfig=strfind(Options,'--config'); %Check if --config is given
 if ~isempty(TempConfig)
