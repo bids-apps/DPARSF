@@ -101,6 +101,9 @@ load([MATPATH,filesep,'Template_V4_CalculateInMNISpace_Warp_DARTEL_docker.mat'])
 Cfg.SubjectID=SubID;
 Cfg.DataProcessDir=OutDir;
 
+%Change the default normalizing strategy to using the T1 image segment information
+Cfg.IsNormalize=2; %1. Normalization by using the EPI template directly; 2. Normalization by using the T1 image segment information; 3. Normalization by using DARTEL
+
 Cfg.IsCalFC=0; %Functional Connectivity
 Cfg.IsExtractROISignals=1; %Extract ROI Signals. Will calculate the FC and zFC between the ROIs as well
 Cfg.CalFC.IsMultipleLabel=1; %1: There are multiple labels in the ROI mask file. Will extract each of them. (e.g., for aal.nii, extract all the time series for 116 regions); 0 (default): All the non-zero values will be used to define the only ROI
@@ -124,7 +127,7 @@ UseNoCoT1Image=1; %Prevent the dialog asking confirm use no co t1 images.
 
 
 T1SourceFileSet = cell(length(SubID),1); %For group level
-Temp=strfind(Options,' group '); %Check if at group level
+Temp=strfind(Options,' group_dartel '); %Check if at group level
 if ~isempty(Temp)
     for i=1:length(SubID)
         SourceDir=dir([OutDir,filesep,'T1ImgNewSegment',filesep,SubID{i},filesep,'sub*.nii']);
