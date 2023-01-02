@@ -17,4 +17,3 @@ if [[ ${optvalues} == *" group_dartel "* ]];
 then
   octave --silent --eval "y_CopyDARTELTemplate(\"$1\",\"$2\",\"${optvalues}\")"
 fi
-

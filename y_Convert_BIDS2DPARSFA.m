@@ -51,7 +51,7 @@ if FunctionalSessionNumber==0
         mkdir([OutDir,filesep,'T1Img',filesep,SubID{i},filesep]);
         DirFile=dir([InDir,filesep,SubID{i},filesep,'anat',filesep,SubID{i},'*_T1w.nii.gz']);
         copyfile([InDir,filesep,SubID{i},filesep,'anat',filesep,DirFile(1).name],[OutDir,filesep,'T1Img',filesep,SubID{i},filesep]);
-        
+
         mkdir([OutDir,filesep,'FunImg',filesep,SubID{i},filesep]);
         DirFile=dir([InDir,filesep,SubID{i},filesep,'func',filesep,'*.nii.gz']);
         copyfile([InDir,filesep,SubID{i},filesep,'func',filesep,DirFile(1).name],[OutDir,filesep,'FunImg',filesep,SubID{i},filesep]);
@@ -65,14 +65,14 @@ if FunctionalSessionNumber>=1
     for iFunSession=2:FunctionalSessionNumber
         FunSessionPrefixSet=[FunSessionPrefixSet;{['S',num2str(iFunSession),'_']}];
     end
-    
+
     mkdir([OutDir,filesep,'T1Img']);
     for i=1:length(SubID)
         mkdir([OutDir,filesep,'T1Img',filesep,SubID{i},filesep]);
         DirFile=dir([InDir,filesep,SubID{i},filesep,DirSessions(1).name,filesep,'anat',filesep,SubID{i},'*_T1w.nii.gz']);
         copyfile([InDir,filesep,SubID{i},filesep,DirSessions(1).name,filesep,'anat',filesep,DirFile(1).name],[OutDir,filesep,'T1Img',filesep,SubID{i},filesep]);
     end
-    
+
     for iFunSession=1:FunctionalSessionNumber
         mkdir([OutDir,filesep,FunSessionPrefixSet{iFunSession},'FunImg']);
         for i=1:length(SubID)
@@ -155,9 +155,3 @@ end
 %     cd(OutDir)
 %     Config_DPARSF([OutDir,filesep,'DPARSFACfg.mat']);
 % end
-
-
-
-
-
-

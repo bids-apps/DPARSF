@@ -19,9 +19,9 @@ load(MatFile)
 %Please setup your configurations below this line
 %======================================
 
-% 
+%
 % Cfg.DPARSFVersion='V4.3_171210'; %The version of DPARSF
-% Cfg.WorkingDir=pwd; %The working directory. 
+% Cfg.WorkingDir=pwd; %The working directory.
 % Cfg.DataProcessDir=Cfg.WorkingDir; %Define DataProcessDir for compatibility
 % Cfg.SubjectID={}; %Subject ID List
 % Cfg.TimePoints=0; %Number of time points. Set to 0 to skip the checking
@@ -37,25 +37,25 @@ load(MatFile)
 % Cfg.IsRealign=1; %Realignment (head motion correction)
 % Cfg.IsCalVoxelSpecificHeadMotion=0; %Calculate the voxel-specific head motion translation in x, y, z and TDvox, FDvox, according to Yan et al., 2013 Neuroimage (76, 183-201.)
 % Cfg.IsNeedReorientFunImgInteractively=1; %Reorient to a good head position and click on the anterior commissure. Will be skipped if Cfg.IsAllowGUI set to 0
-% 
+%
 % Cfg.IsNeedConvertT1DCM2IMG=1; %Convert T1 DICOM files to NIfTI files
 % Cfg.IsNeedReorientCropT1Img=0; %Crop the T1 .nii/.nii.gz/.img images (Reorient to the nearest orthogonal direction to ''canonical space'' and remove excess air surrounding the individual as well as parts of the neck below the cerebellum, i.e., make co*.nii or co*.img)
 % Cfg.IsNeedReorientT1ImgInteractively=1; %Reorient to a good head position and click on the anterior commissure. Will be skipped if Cfg.IsAllowGUI set to 0
 % Cfg.IsBet=1; %Bet structural and functional images (call FSL's bet)
 % Cfg.IsAutoMask=1; %Calculate automasks. Similar to AFNI's 3dAutoMask
-% 
+%
 % Cfg.IsNeedT1CoregisterToFun=1; %Coregister structural images to functional space
 % Cfg.IsNeedReorientInteractivelyAfterCoreg=0; %Reorient to a good head position and click on the anterior commissure. Display on T1 image, but apply simultaneously to functional and T1 images. Will be skipped if Cfg.IsAllowGUI set to 0
-% 
+%
 % Cfg.IsSegment=2; %Segmentation: 1 for old segment; 2 for new segment.
 % Cfg.Segment.AffineRegularisationInSegmentation='mni'; %Affine regularization
-% 
+%
 % Cfg.IsDARTEL=1; %Perform DARTEL
-% 
+%
 % Cfg.IsCovremove=1; %Nuisance regression
-% Cfg.Covremove.Timing='AfterRealign';  %Another option: AfterNormalize 
+% Cfg.Covremove.Timing='AfterRealign';  %Another option: AfterNormalize
 % Cfg.Covremove.PolynomialTrend=1; %Polynomial trends. 0: constant; 1: constant + linear trend; 2: constant + linear trend + quadratic trend; 3: constant + linear trend + quadratic trend + cubic trend.   ...
-% Cfg.Covremove.HeadMotion=4; %1: Use the current time point of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi...; 2: Use the current time point and the previous time point of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi,..., Txi-1, Tyi-1, Tzi-1...; 3: Use the current time point and their squares of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi,..., Txi^2, Tyi^2, Tzi^2...; 4: Use the Friston 24-parameter model: current time point, the previous time point and their squares of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi, ..., Txi-1, Tyi-1, Tzi-1,... and their squares (total 24 items). Friston autoregressive model (Friston, K.J., Williams, S., Howard, R., Frackowiak, R.S., Turner, R., 1996. Movement-related effects in fMRI time-series. Magn Reson Med 35, 346-355.); 
+% Cfg.Covremove.HeadMotion=4; %1: Use the current time point of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi...; 2: Use the current time point and the previous time point of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi,..., Txi-1, Tyi-1, Tzi-1...; 3: Use the current time point and their squares of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi,..., Txi^2, Tyi^2, Tzi^2...; 4: Use the Friston 24-parameter model: current time point, the previous time point and their squares of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi, ..., Txi-1, Tyi-1, Tzi-1,... and their squares (total 24 items). Friston autoregressive model (Friston, K.J., Williams, S., Howard, R., Frackowiak, R.S., Turner, R., 1996. Movement-related effects in fMRI time-series. Magn Reson Med 35, 346-355.);
 % %11-14: Use the voxel-specific models. 14 is the voxel-specific 12 model.
 % Cfg.Covremove.IsHeadMotionScrubbingRegressors=0; %Head Motion "Scrubbing" Regressors: each bad time point is a separate regressor if set to 1
 % Cfg.Covremove.HeadMotionScrubbingRegressors.FDType='FD_Power'; %Can also be FD_Jenkinson
@@ -78,32 +78,32 @@ load(MatFile)
 % Cfg.Covremove.WholeBrain.Method = 'Mean';
 % Cfg.Covremove.OtherCovariatesROI = []; %Define Other kinds of nuisance covariates.
 % Cfg.Covremove.IsAddMeanBack = 0; %Add mean back, thus you can still see the WM/GM/CSF contrast. Maybe useful in group ICA or SPM GLM analyses.
-% 
+%
 % Cfg.IsFilter=1; %Ideal filter.
 % Cfg.Filter.Timing='AfterNormalize'; %Another option: BeforeNormalize
 % Cfg.Filter.ALowPass_HighCutoff=0.1;
 % Cfg.Filter.AHighPass_LowCutoff=0.01;
-% Cfg.Filter.AAddMeanBack='Yes'; %Add mean back, thus you can still see the WM/GM/CSF contrast. 
-% 
+% Cfg.Filter.AAddMeanBack='Yes'; %Add mean back, thus you can still see the WM/GM/CSF contrast.
+%
 % Cfg.IsNormalize=3; %1. Normalization by using the EPI template directly; 2. Normalization by using the T1 image segment information; 3. Normalization by using DARTEL
 % Cfg.Normalize.Timing='OnFunctionalData'; %Another option: OnResults
 % Cfg.Normalize.BoundingBox=[-90 -126 -72;90 90 108];
 % Cfg.Normalize.VoxSize=[3 3 3];
-% 
+%
 % Cfg.IsSmooth=1; %1. Normal smooth. 2. Smooth by DARTEL. The smoothing that is a part of the normalization to MNI space computes these average intensities from the original data, rather than the warped versions. When the data are warped, some voxels will grow and others will shrink. This will change the regional averages, with more weighting towards those voxels that have grows.
 % Cfg.Smooth.Timing='OnResults'; %Another option: OnFunctionalData
 % Cfg.Smooth.FWHM=[4 4 4];
-% 
+%
 % Cfg.MaskFile ='Default'; %Using DPABI/Templates/BrainMask_05_61x73x61.img
-% 
+%
 % Cfg.IsWarpMasksIntoIndividualSpace=0; %Calculation in individual (original/native) space.
-% 
+%
 % Cfg.IsDetrend=0; %Detrend is no longer needed if linear trend is included in nuisance regression.
-% 
+%
 % Cfg.IsCalALFF=1; %Calculate ALFF and fALFF
 % Cfg.CalALFF.AHighPass_LowCutoff=0.01;
 % Cfg.CalALFF.ALowPass_HighCutoff=0.1;
-% 
+%
 % Cfg.IsScrubbing=0; %Scrubbing (delete the bad time points)
 % Cfg.Scrubbing.Timing='AfterPreprocessing';
 % Cfg.Scrubbing.FDType='FD_Power'; %Can also be FD_Jenkinson
@@ -111,28 +111,28 @@ load(MatFile)
 % Cfg.Scrubbing.PreviousPoints=1;
 % Cfg.Scrubbing.LaterPoints=2;
 % Cfg.Scrubbing.ScrubbingMethod='cut';  %1. 'cut': discarding the timepoints with TemporalMask == 0; 2. 'nearest': interpolate the timepoints with TemporalMask == 0 by Nearest neighbor interpolation; 3. 'linear': interpolate the timepoints with TemporalMask == 0 by Linear interpolation; 4. 'spline': interpolate the timepoints with TemporalMask == 0 by Cubic spline interpolation; 5. 'pchip': interpolate the timepoints with TemporalMask == 0 by Piecewise cubic Hermite interpolation
-% 
+%
 % Cfg.IsCalReHo=1; %Calculate ReHo
 % Cfg.CalReHo.ClusterNVoxel=27;% The number of the voxel for a given cluster during calculating the KCC (e.g. 27, 19, or 7);
 % Cfg.CalReHo.SmoothReHo=0; %Smooth ReHo results after calculation
-% 
+%
 % Cfg.IsCalDegreeCentrality=1; %Degree Centrality
 % Cfg.CalDegreeCentrality.rThreshold=0.25;
-% 
+%
 % Cfg.IsCalFC=0; %Functional Connectivity
 % Cfg.IsExtractROISignals=1; %Extract ROI Signals. Will calculate the FC and zFC between the ROIs as well
 % Cfg.CalFC.IsMultipleLabel=1; %1: There are multiple labels in the ROI mask file. Will extract each of them. (e.g., for aal.nii, extract all the time series for 116 regions); 0 (default): All the non-zero values will be used to define the only ROI
 % Cfg.CalFC.ROIDef=[];%ROI definition, cells. Each cell could be: 1. 3D mask martrix (DimX*DimY*DimZ); 2. Series matrix (DimTimePoints*1); 3. Sphere Definition; 4. .img/.nii/.nii.gz mask file; 5. .txt Series. If multiple columns, when IsMultipleLabel==1: each column is a seperate seed series; when IsMultipleLabel==0: average all the columns and take the mean series (one column) as seed series
 % Cfg.IsDefineROIInteractively = 0; %Define ROIs interactively based on T1 image
-% 
+%
 % Cfg.IsCWAS = 0; %CWAS analysis
 % Cfg.CWAS.Regressors = [];
 % Cfg.CWAS.iter = 0;
-% 
+%
 % Cfg.IsNormalizeToSymmetricGroupT1Mean = 1; %Normalize to symmetric template for VMHC analysis
 % Cfg.IsSmoothBeforeVMHC = 1; %Smooth the functional data right before VMHC calculation
 % Cfg.IsCalVMHC = 1; %Calculate VMHC
-% 
+%
 % Cfg.FunctionalSessionNumber=1; %If you have mutilple functional sessions, you need to specify the number of sessions. And your directory should be named as FunRaw (or FunImg) for the first session; S2_FunRaw (or S2_FunImg) for the second session; S3_FunRaw (or S3_FunImg) for the third session...
 % Cfg.StartingDirName='FunRaw'; %'If you do not start with raw DICOM images, you need to specify the Starting Directory Name. E.g. "FunImgARW" means you start with images which have been slice timing corrected, realigned and normalized. Abbreviations: A - Slice Timing; R - Realign; W - Normalize; S - Smooth; D - Detrend; F - Filter; C - Covariates Removed; B - ScruBBing; sym - Normalized to a symmetric template...
 
@@ -141,9 +141,3 @@ load(MatFile)
 %Please setup your configurations above this line
 
 save('-v7',MatFile,'Cfg','UseNoCoT1Image','T1SourceFileSet');
-
-
-
-
-
-

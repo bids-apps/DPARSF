@@ -19,9 +19,9 @@ load(MatFile)
 %Please setup your configurations below this line
 %======================================
 
-% 
+%
 % Cfg.DPARSFVersion='V4.3_171210'; %The version of DPARSF
-% Cfg.WorkingDir=pwd; %The working directory. 
+% Cfg.WorkingDir=pwd; %The working directory.
 % Cfg.DataProcessDir=Cfg.WorkingDir; %Define DataProcessDir for compatibility
 % Cfg.SubjectID={}; %Subject ID List
 % Cfg.TimePoints=0; %Number of time points. Set to 0 to skip the checking
@@ -56,9 +56,9 @@ Cfg.Segment.AffineRegularisationInSegmentation='mni'; %Affine regularization
 Cfg.IsDARTEL=0; %Perform DARTEL
 
 Cfg.IsCovremove=0; %Nuisance regression
-Cfg.Covremove.Timing='AfterRealign';  %Another option: AfterNormalize 
+Cfg.Covremove.Timing='AfterRealign';  %Another option: AfterNormalize
 Cfg.Covremove.PolynomialTrend=1; %Polynomial trends. 0: constant; 1: constant + linear trend; 2: constant + linear trend + quadratic trend; 3: constant + linear trend + quadratic trend + cubic trend.   ...
-Cfg.Covremove.HeadMotion=4; %1: Use the current time point of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi...; 2: Use the current time point and the previous time point of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi,..., Txi-1, Tyi-1, Tzi-1...; 3: Use the current time point and their squares of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi,..., Txi^2, Tyi^2, Tzi^2...; 4: Use the Friston 24-parameter model: current time point, the previous time point and their squares of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi, ..., Txi-1, Tyi-1, Tzi-1,... and their squares (total 24 items). Friston autoregressive model (Friston, K.J., Williams, S., Howard, R., Frackowiak, R.S., Turner, R., 1996. Movement-related effects in fMRI time-series. Magn Reson Med 35, 346-355.); 
+Cfg.Covremove.HeadMotion=4; %1: Use the current time point of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi...; 2: Use the current time point and the previous time point of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi,..., Txi-1, Tyi-1, Tzi-1...; 3: Use the current time point and their squares of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi,..., Txi^2, Tyi^2, Tzi^2...; 4: Use the Friston 24-parameter model: current time point, the previous time point and their squares of rigid-body 6 realign parameters. e.g., Txi, Tyi, Tzi, ..., Txi-1, Tyi-1, Tzi-1,... and their squares (total 24 items). Friston autoregressive model (Friston, K.J., Williams, S., Howard, R., Frackowiak, R.S., Turner, R., 1996. Movement-related effects in fMRI time-series. Magn Reson Med 35, 346-355.);
 %11-14: Use the voxel-specific models. 14 is the voxel-specific 12 model.
 Cfg.Covremove.IsHeadMotionScrubbingRegressors=0; %Head Motion "Scrubbing" Regressors: each bad time point is a separate regressor if set to 1
 Cfg.Covremove.HeadMotionScrubbingRegressors.FDType='FD_Power'; %Can also be FD_Jenkinson
@@ -86,7 +86,7 @@ Cfg.IsFilter=0; %Ideal filter.
 Cfg.Filter.Timing='AfterNormalize'; %Another option: BeforeNormalize
 Cfg.Filter.ALowPass_HighCutoff=0.1;
 Cfg.Filter.AHighPass_LowCutoff=0.01;
-Cfg.Filter.AAddMeanBack='Yes'; %Add mean back, thus you can still see the WM/GM/CSF contrast. 
+Cfg.Filter.AAddMeanBack='Yes'; %Add mean back, thus you can still see the WM/GM/CSF contrast.
 
 Cfg.IsNormalize=0; %1. Normalization by using the EPI template directly; 2. Normalization by using the T1 image segment information; 3. Normalization by using DARTEL
 Cfg.Normalize.Timing='OnFunctionalData'; %Another option: OnResults
@@ -144,9 +144,3 @@ Cfg.StartingDirName='FunImg'; %'If you do not start with raw DICOM images, you n
 %Please setup your configurations above this line
 
 save('-v7',MatFile,'Cfg','UseNoCoT1Image','T1SourceFileSet');
-
-
-
-
-
-

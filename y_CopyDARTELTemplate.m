@@ -33,4 +33,3 @@ end
 for i=2:length(SubID)
     copyfile([OutDir,filesep,'T1ImgNewSegment',filesep,SubID{1},filesep,'Template_6*'],[OutDir,filesep,'T1ImgNewSegment',filesep,SubID{i},filesep]);
 end
-
