@@ -1,14 +1,17 @@
 FROM bids/base_validator
 
-MAINTAINER Chao-Gan Yan <ycg.yan@gmail.com>
+ARG DEBIAN_FRONTEND="noninteractive"
+
+# MAINTAINER Chao-Gan Yan <ycg.yan@gmail.com>
 #Referenced from Guillaume Flandin's SPM BIDS apps
 
 # Update system
-RUN apt-get -qq update && apt-get -qq install -y \
-    unzip \
-    xorg \
-    octave \
-    wget && \
+RUN apt-get -qq update && \
+    apt-get -qq install -y --no-install-recommends \
+        unzip \
+        xorg \
+        octave \
+        wget && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install MATLAB MCR
@@ -38,9 +41,9 @@ COPY y_Convert_BIDS2DPARSFA.m /opt/DPARSFA_run_StandAlone_Linux/
 COPY y_CopyDARTELTemplate.m /opt/DPARSFA_run_StandAlone_Linux/
 COPY Atlas /opt/DPARSFA_run_StandAlone_Linux/
 COPY version /version
-RUN chmod +x /opt/DPARSFA_run_StandAlone_Linux/run.sh
-RUN chmod +x /opt/DPARSFA_run_StandAlone_Linux/run_DPARSFA_run.sh
-RUN chmod +x /opt/DPARSFA_run_StandAlone_Linux/DPARSFA_run
+RUN chmod +x /opt/DPARSFA_run_StandAlone_Linux/run.sh && \
+    chmod +x /opt/DPARSFA_run_StandAlone_Linux/run_DPARSFA_run.sh && \
+    chmod +x /opt/DPARSFA_run_StandAlone_Linux/DPARSFA_run
 
 ENV DPARSFPath /opt/DPARSFA_run_StandAlone_Linux
 

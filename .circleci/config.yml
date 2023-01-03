@@ -31,7 +31,7 @@ jobs:
         - ~/docker
         - ~/data
 
-    # participant level tests for single session dataset
+      # participant level tests for single session dataset
     - run:
         command: docker run -ti --rm --read-only -v /tmp:/tmp -v /var/tmp:/var/tmp -v ${HOME}/data/ds114_test1:/bids_dataset -v ${HOME}/outputs1:/outputs
           bids/${CIRCLE_PROJECT_REPONAME,,} /bids_dataset /outputs participant --participant_label 01
@@ -40,7 +40,7 @@ jobs:
         command: docker run -ti --rm --read-only -v /tmp:/tmp -v /var/tmp:/var/tmp -v ${HOME}/data/ds114_test1:/bids_dataset -v ${HOME}/outputs1:/outputs
           bids/${CIRCLE_PROJECT_REPONAME,,} /bids_dataset /outputs participant --participant_label 02
         no_output_timeout: 6h
-    # participant level tests for a longitudinal dataset
+      # participant level tests for a longitudinal dataset
     - run:
         command: docker run -ti --rm --read-only -v /tmp:/tmp -v /var/tmp:/var/tmp -v ${HOME}/data/ds114_test2:/bids_dataset -v ${HOME}/outputs2:/outputs
           bids/${CIRCLE_PROJECT_REPONAME,,} /bids_dataset /outputs participant --participant_label 01
@@ -57,7 +57,7 @@ jobs:
     steps:
     - attach_workspace:
         at: /tmp/workspace
-    - setup_remote_docker
+
     - run: docker load -i /tmp/workspace/image.tar
     - run:
         command: if [[ -n "$DOCKER_PASS" ]]; then docker login -u $DOCKER_USER -p $DOCKER_PASS && docker push bids/${CIRCLE_PROJECT_REPONAME,,}:latest;
@@ -84,5 +84,4 @@ workflows:
             ignore: /.*/
           tags:
             only: /.*/
-
 # VS Code Extension Version: 1.5.1
