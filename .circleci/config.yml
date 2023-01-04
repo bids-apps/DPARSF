@@ -70,14 +70,14 @@ jobs:
     - run:
         name: print version
         command: |
-          docker run -ti --rm --read-only \
+          docker run -ti --rm \
             -v /tmp:/tmp \
             -v /var/tmp:/var/tmp \
             -v /tmp/workspace/data/ds114_test1:/bids_dataset \
               bids/${CIRCLE_PROJECT_REPONAME,,} --version
     - run:
         command: |
-          docker run -ti --rm --read-only \
+          docker run -ti --rm \
             -v /tmp:/tmp \
             -v /var/tmp:/var/tmp \
             -v /tmp/workspace/data/ds114_test<< parameters.dataset >>:/bids_dataset \
@@ -86,7 +86,7 @@ jobs:
         no_output_timeout: 6h
     - run:
         command: |
-          docker run -ti --rm --read-only \
+          docker run -ti --rm \
             -v /tmp:/tmp \
             -v /var/tmp:/var/tmp \
             -v /tmp/workspace/data/ds114_test<< parameters.dataset >>:/bids_dataset \
