@@ -76,6 +76,7 @@ jobs:
             -v /tmp/workspace/data/ds114_test1:/bids_dataset \
               bids/${CIRCLE_PROJECT_REPONAME,,} --version
     - run:
+        name: run participant 01
         command: |
           docker run -ti --rm \
             -v /tmp:/tmp \
@@ -85,6 +86,7 @@ jobs:
               bids/${CIRCLE_PROJECT_REPONAME,,} /bids_dataset /outputs participant --participant_label 01
         no_output_timeout: 6h
     - run:
+        name: run participant 02
         command: |
           docker run -ti --rm \
             -v /tmp:/tmp \
