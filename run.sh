@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -o pipefail
+
 SessionID=$RANDOM
 
 cd ${DPARSFPath}
