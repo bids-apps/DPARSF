@@ -47,6 +47,6 @@ RUN chmod +x /opt/DPARSFA_run_StandAlone_Linux/run.sh && \
 
 ENV DPARSFPath /opt/DPARSFA_run_StandAlone_Linux
 
-ENV LD_PRELOAD "/usr/lib/x86_64-linux-gnu/libstdc++.so.6 /usr/lib/x86_64-linux-gnu/libfreetype.so.6 $LD_PRELOAD"
+ENV LD_PRELOAD "/usr/lib/x86_64-linux-gnu/libtiff.so.5 /usr/lib/x86_64-linux-gnu/libcurl.so.4 /usr/lib/x86_64-linux-gnu/libstdc++.so.6 /usr/lib/x86_64-linux-gnu/libfreetype.so.6 $LD_PRELOAD"
 
 ENTRYPOINT ["/opt/DPARSFA_run_StandAlone_Linux/run.sh"]
